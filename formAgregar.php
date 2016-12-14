@@ -3,7 +3,7 @@
     { 
         session_start(); 
     } 
-require('../configDB.php');
+require('configDB.php');
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -44,7 +44,7 @@ $paises = mysqli_fetch_all($result,MYSQLI_ASSOC);
   <div class="container">
   <h2>Formulario</h2>
   <br>
-  <form enctype="multipart/form-data" method="post" action="agregarBDD.php">
+  <form enctype="multipart/form-data" method="post" action="agregar.php">
     <div class="form-group">
       <label for="nombre">Nombre:</label>
       <input type="text" class="form-control" name="Usuario_nombre" placeholder="Escribe su nombre" value="<?=isset($old) ? $old->nombre : '' ?>">
@@ -58,20 +58,12 @@ $paises = mysqli_fetch_all($result,MYSQLI_ASSOC);
       <input type="text" class="form-control" name="Usuario_apellido2" placeholder="Escribe su segundo apellido" value="<?=isset($old) ? $old->apellido2 : '' ?>">
     </div>
     <div class="form-group">
-      <label for="nick">Nickname:</label>
-      <input type="text" class="form-control" name="Usuario_nick" placeholder="Escribe su nick" value="<?=isset($old) ? $old->nick: '' ?>">
-    </div>
-    <div class="form-group">
       <label for="password">Clave:</label>
       <input type="password" class="form-control" name="Usuario_clave" placeholder="Escribe su clave"> 
     </div>
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="text" class="form-control" name="Usuario_email" placeholder="Escribe su email" value="<?=isset($old) ? $old->email : '' ?>">
-    </div>
-    <div class="form-group">
-      <label for="nif">NIF:</label>
-      <input type="text" class="form-control" name="Usuario_nif" placeholder="Escribe su nif" value="<?=isset($old) ? $old->nif: '' ?>">
     </div>
     <div class="form-group">
       <label for="numTelefono">Telefono:</label>
