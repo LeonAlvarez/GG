@@ -14,7 +14,8 @@ if ($conn->connect_error) {
 }
 
 //header('Location: error.php'); para redirigir
-$condicion = [];
+$condicion = null;
+
 $sql = "SELECT * FROM usuarios ";
 
 $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
@@ -31,30 +32,34 @@ if($apellido1!=null)
 if($apellido2!=null)
     $condicion[] = "apellido2='$apellido2'";
 
-$condicion = implode(" AND ", $condicion);
-
-
-if($condicion!="")
-    $sql = $sql." WHERE ".$condicion;   
-
+if($condicion!=null){      
+    $condicion = implode(" AND ", $condicion);
+    $sql = $sql." WHERE ".$condicion;  
+}
+   
 $result = $conn->query($sql); ?>
 
-<form action="tabla.php">
-    <input type="text" name="id" value="">
-    <input type="text" name="nombre" value="">
-    <input type="text" name="apellido1" value="">
-    <input type="text" name="apellido2" value="">
-    <button type="submit">Buscar</button>
-</form>
 
-<table width="50%" style="text-align:center;"> 
+
+<table width="100%" style="text-align:center;" border="1"> 
     <thead>
-        <th>id</th>
-        <th>nombre</th>
-        <th>apellido1</th>
-        <th>apellido2</th> 
-        <th>editar</th>
-        <th>borrar</th>       
+        <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>apellido1</th>
+            <th>apellido2</th> 
+            <th>editar</th>
+            <th>borrar</th>      
+        </tr> 
+        <tr>
+            <form action="tabla.php">
+                <th><input type="text" name="id" value=""></th>
+                <th><input type="text" name="nombre" value=""></th>
+                <th><input type="text" name="apellido1" value=""></th>
+                <th><input type="text" name="apellido2" value=""></th>
+                <th colspan="2"><button type="submit">Buscar</button></th></th>
+            </form>
+        </tr> 
     </thead>
     <tbody>
     <?php if ($result->num_rows > 0) {
