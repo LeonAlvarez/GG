@@ -7,6 +7,8 @@ if(!isset($_SESSION['user']))
 
 //cargamos los errores desde la session
 $errores = isset($_SESSION['errores']) ? $_SESSION['errores']: null;
+//una vez guardados los errores , hacemos unset() para eliminar la variable errores de la seson
+//Sino iriamos acumulando los errores y se mostrarian en todas las paginas aunque ya no esten
 unset($_SESSION['errores']);
 
 // Create connection
