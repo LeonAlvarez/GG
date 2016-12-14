@@ -23,11 +23,11 @@ $row = $result->fetch_assoc();
 
 ?>
 <form action="actualizar.php">
-    <label for="nombre">Email </label>
+    <label for="nombre">Nombre </label>
     <input type="text" name="nombre" value="<?=$row['nombre']?>">
-    <label for="apellido1">Email </label>
+    <label for="apellido1">Primer Apellido </label> 
     <input type="text" name="apellido1" value="<?=$row['apellido1']?>">
-    <label for="apellido2">Email </label>
+    <label for="apellido2">Segundo Apellido </label>
     <input type="text" name="apellido2" value="<?=$row['apellido2']?>">
     <input type="hidden" name="id" value="<?=$row['id']?>">
     <button type="submit">Editar</button>

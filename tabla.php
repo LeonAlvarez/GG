@@ -1,6 +1,7 @@
 <?php
-
+//inciamos sesion
 session_start();
+//comprobamos que tengamos el user en sesion
 if(!isset($_SESSION['user']))
     header('Location: index.html');
 
