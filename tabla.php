@@ -97,7 +97,7 @@ $usuarios = mysqli_fetch_all($result,MYSQLI_ASSOC);
                     <th><input type="text" name="apellido1" value=""></th>
                     <th><input type="text" name="apellido2" value=""></th>
                     <th><input type="text" name="pais" value=""></th>
-                    <th colspan="2"><button type="submit">Buscar</button></th></th>
+                    <th colspan="2"><button type="submit">Buscar</button></th>
                 </form>
             </tr> 
         </thead>
