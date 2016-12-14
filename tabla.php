@@ -114,8 +114,8 @@ $usuarios = mysqli_fetch_all($result,MYSQLI_ASSOC);
                 <td><?=$user['apellido1']?></td> 
                 <td><?=$user['apellido2']?></td>
                 <td><?=$user['pais']?></td>
-                <td><a href="editar.php?id=<?=$row['id']?>">Editar</a></td>
-                <td><a href="borrar.php?id=<?=$row['id']?>">Borrar</a></td>
+                <td><a href="editar.php?id=<?=$user['id']?>">Editar</a></td>
+                <td><a href="borrar.php?id=<?=$user['id']?>">Borrar</a></td>
             </tr>
         <?php } ?>        
         </tbody>

@@ -27,10 +27,19 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM usuarios WHERE id='$id'";
+//$sql = "SELECT * FROM usuarios WHERE id='$id'"; 
+$sql = "SELECT usuarios.id AS id , nombre ,apellido1, apellido2 , country.nicename AS pais 
+FROM usuarios , country WHERE country.id =id_pais AND usuarios.id='$id'";
+
+var_dump($sql);
 
 $result = $conn->query($sql);
 $user = $result->fetch_assoc();
+
+//cogemos todos los paises
+$sql = "SELECT * FROM country ";   
+$result = $conn->query($sql);
+$paises = mysqli_fetch_all($result,MYSQLI_ASSOC);
 
 ?>
 <form action="actualizar.php">
@@ -41,6 +50,11 @@ $user = $result->fetch_assoc();
     <label for="apellido2">Segundo Apellido </label>
     <input type="text" name="apellido2" value="<?=$user['apellido2']?>">
     <input type="hidden" name="id" value="<?=$user['id']?>">
+     <select name="pais">
+        <?php foreach($paises as $pais){?>
+            <option value="<?=$pais['id']?>"  <?=($pais['nicename']==$user['pais'])? 'selected' : '' ?> ><?=$pais['nicename']?></option> 
+        <?php }?> 
+    </select>
     <button type="submit">Editar</button>
 </form>
 
