@@ -21,12 +21,18 @@ if ($conn->connect_error) {
 
 $condicion = null;
 
-$sql = "SELECT * FROM usuarios ";
+// la query con la relacion entre Usuarios y Pais
+$sql = "SELECT usuarios.id AS id , nombre ,apellido1, apellido2 , country.nicename AS pais 
+FROM usuarios , country WHERE country.id =id_pais ";
+
+// //mostramos el lso datos del request para enseñarlo
+// var_dump($_REQUEST);
 
 $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 $nombre = isset($_REQUEST['nombre']) ? $_REQUEST['nombre'] : null;
 $apellido1 = isset($_REQUEST['apellido1']) ? $_REQUEST['apellido1'] : null;
 $apellido2 = isset($_REQUEST['apellido2']) ? $_REQUEST['apellido2'] : null;
+$pais = isset($_REQUEST['pais']) ? $_REQUEST['pais'] : null;
 
 if($id!=null)
     $condicion[] = "id='$id'";
@@ -36,13 +42,23 @@ if($apellido1!=null)
     $condicion[] = "apellido1='$apellido1'";
 if($apellido2!=null)
     $condicion[] = "apellido2='$apellido2'";
+if($pais!=null)
+    $condicion[] = "id_pais='$pais'";
 
 if($condicion!=null){      
     $condicion = implode(" AND ", $condicion);
     $sql = $sql." WHERE ".$condicion;  
 }
-   
-$result = $conn->query($sql); ?>
+
+////para mostrar la query y depurar
+//var_dump($sql); 
+
+$result = $conn->query($sql); 
+//Recogemos el resultado de la query en $usuarios
+//(sera un array donde cada elemento sera tmb un array con los campos de las columnas de la tabla)
+$usuarios = mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -69,6 +85,7 @@ $result = $conn->query($sql); ?>
                 <th>nombre</th>
                 <th>apellido1</th>
                 <th>apellido2</th> 
+                <th>pais</th>
                 <th>editar</th>
                 <th>borrar</th>      
             </tr> 
@@ -79,26 +96,28 @@ $result = $conn->query($sql); ?>
                     <th><input type="text" name="nombre" value=""></th>
                     <th><input type="text" name="apellido1" value=""></th>
                     <th><input type="text" name="apellido2" value=""></th>
+                    <th><input type="text" name="pais" value=""></th>
                     <th colspan="2"><button type="submit">Buscar</button></th></th>
                 </form>
             </tr> 
         </thead>
-        <tbody>
-        <!--Si almenos 1 resultado en la query-->
-        <?php if ($result->num_rows > 0) {
-        // por cada fila de la consulta cremos una fila en la tabla
-        while($row = $result->fetch_assoc()) { ?>
+        <tbody>        
+         <!--por cada fila de la consulta cremos una fila en la tabla-->
+        <?php 
+            //Para cada $user en $usuarios
+            // for($i=0 ; i<count($usuarios))
+            foreach($usuarios as $user) {         
+        ?>
             <tr>
-                <td><?=$row['id']?></td>
-                <td><?=$row['nombre']?></td>
-                <td><?=$row['apellido1']?></td> 
-                <td><?=$row['apellido2']?></td>
+                <td><?=$user['id']?></td>
+                <td><?=$user['nombre']?></td>
+                <td><?=$user['apellido1']?></td> 
+                <td><?=$user['apellido2']?></td>
+                <td><?=$user['pais']?></td>
                 <td><a href="editar.php?id=<?=$row['id']?>">Editar</a></td>
                 <td><a href="borrar.php?id=<?=$row['id']?>">Borrar</a></td>
             </tr>
-        <?php } 
-        }?>
-        
+        <?php } ?>        
         </tbody>
     </table>
 
