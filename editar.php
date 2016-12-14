@@ -4,9 +4,9 @@ session_start();
 //comprobamos que tengamos el user en sesion
 if(!isset($_SESSION['user']))
     header('Location: index.html');
-//Si tenemos usuario
+//Si esta logueado
 else{
-    //SI el campo admin es false ( no es admin)
+    //SI el usuario no es admin ( campo admin es falso)
     if(!$_SESSION['user']['admin']){
         //SI el id quue le pasamos para editar es distinto al del user volvemos a la tabla
         if($_SESSION['user']['id']!=$_REQUEST['id']){
