@@ -31,7 +31,7 @@ if ($conn->connect_error) {
 $sql = "SELECT usuarios.id AS id , nombre ,apellido1, apellido2 , country.nicename AS pais 
 FROM usuarios , country WHERE country.id =id_pais AND usuarios.id='$id'";
 
-var_dump($sql);
+//var_dump($sql);
 
 $result = $conn->query($sql);
 $user = $result->fetch_assoc();
