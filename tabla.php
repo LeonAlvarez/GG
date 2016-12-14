@@ -39,8 +39,6 @@ if($condicion!=null){
    
 $result = $conn->query($sql); ?>
 
-
-
 <table width="100%" style="text-align:center;" border="1"> 
     <thead>
         <tr>
@@ -52,6 +50,7 @@ $result = $conn->query($sql); ?>
             <th>borrar</th>      
         </tr> 
         <tr>
+            <!--formulario para buscar en las cabeceras de la tabla -->
             <form action="tabla.php">
                 <th><input type="text" name="id" value=""></th>
                 <th><input type="text" name="nombre" value=""></th>
@@ -62,13 +61,14 @@ $result = $conn->query($sql); ?>
         </tr> 
     </thead>
     <tbody>
+    <!--Si almenos 1 resultado en la query-->
     <?php if ($result->num_rows > 0) {
-    // output data of each row
+    // por cada fila de la consulta cremos una fila en la tabla
     while($row = $result->fetch_assoc()) { ?>
         <tr>
             <td><?=$row['id']?></td>
             <td><?=$row['nombre']?></td>
-            <td><?=$row['apellido1']?></td>
+            <td><?=$row['apellido1']?></td> 
             <td><?=$row['apellido2']?></td>
             <td><a href="editar.php?id=<?=$row['id']?>">Editar</a></td>
             <td><a href="borrar.php?id=<?=$row['id']?>">Borrar</a></td>
