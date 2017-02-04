@@ -35,23 +35,23 @@ $apellido2 = isset($_REQUEST['apellido2']) ? $_REQUEST['apellido2'] : null;
 $pais = isset($_REQUEST['pais']) ? $_REQUEST['pais'] : null;
 
 if($id!=null)
-    $condicion[] = "id='$id'";
+    $condicion[] = "usuarios.id LIKE '$id%'";
 if($nombre!=null)
-    $condicion[] = "nombre='$nombre'";
+    $condicion[] = "nombre LIKE '$nombre%'";
 if($apellido1!=null)
-    $condicion[] = "apellido1='$apellido1'";
+    $condicion[] = "apellido1 LIKE '$apellido1%'";
 if($apellido2!=null)
-    $condicion[] = "apellido2='$apellido2'";
+    $condicion[] = "apellido2 LIKE '$apellido2%'";
 if($pais!=null)
-    $condicion[] = "id_pais='$pais'";
+    $condicion[] = "country.nicename LIKE '$pais%'";
 
 if($condicion!=null){      
     $condicion = implode(" AND ", $condicion);
-    $sql = $sql." WHERE ".$condicion;  
+    $sql = $sql." AND ".$condicion;
 }
 
 ////para mostrar la query y depurar
-//var_dump($sql); 
+var_dump($sql);
 
 $result = $conn->query($sql); 
 //Recogemos el resultado de la query en $usuarios
