@@ -18,21 +18,34 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+$limit=10;
 $condicion = null;
-
-// la query con la relacion entre Usuarios y Pais
-$sql = "SELECT usuarios.id AS id , nombre ,apellido1, apellido2 , country.nicename AS pais 
-FROM usuarios , country WHERE country.id =id_pais ";
+//Sacamos la ruta de la pagina actual para conservar los parametros y no  perder la busqueda
+$url = "$_SERVER[REQUEST_URI]";
+//Con regex eliminamos el ?pag= o &pag= pra que no nos sume uno nuevo cada vez que cambiamos de pagina
+$url = preg_replace("/[&?]pag=[0-9]+/","",$url);
+//Si la ruta ya tiene algun parametro ( esta la ?) añadimos & para luego apadirle pag= en los enlaces de paginacion
+if (strpos($url, '?') !== false)
+    $url.="&";
+//sino añadimos ? pag= en los enlaces de paginacion
+else
+    $url.="?";
 
 // //mostramos el lso datos del request para enseñarlo
 // var_dump($_REQUEST);
 
+$pag = isset($_REQUEST['pag']) ? $_REQUEST['pag'] : 1;
 $id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null;
 $nombre = isset($_REQUEST['nombre']) ? $_REQUEST['nombre'] : null;
 $apellido1 = isset($_REQUEST['apellido1']) ? $_REQUEST['apellido1'] : null;
 $apellido2 = isset($_REQUEST['apellido2']) ? $_REQUEST['apellido2'] : null;
 $pais = isset($_REQUEST['pais']) ? $_REQUEST['pais'] : null;
+
+// la query con la relacion entre Usuarios y Pais
+$sql = "SELECT usuarios.id AS id , nombre ,apellido1, apellido2 , country.nicename AS pais 
+FROM usuarios , country WHERE country.id =id_pais";
+//Sql para el total de la paginacion
+$sqlCount= "SELECT count(*)  as total FROM usuarios , country WHERE country.id =id_pais ";
 
 if($id!=null)
     $condicion[] = "usuarios.id LIKE '$id%'";
@@ -48,8 +61,10 @@ if($pais!=null)
 if($condicion!=null){      
     $condicion = implode(" AND ", $condicion);
     $sql = $sql." AND ".$condicion;
+    $sqlCount = $sqlCount." AND ".$condicion;
 }
-
+//Añadimos el offset y el limit a la query para paginar
+$sql = $sql." LIMIT ".$limit." OFFSET ".($pag-1)*$limit;
 ////para mostrar la query y depurar
 var_dump($sql);
 
@@ -57,6 +72,11 @@ $result = $conn->query($sql);
 //Recogemos el resultado de la query en $usuarios
 //(sera un array donde cada elemento sera tmb un array con los campos de las columnas de la tabla)
 $usuarios = mysqli_fetch_all($result,MYSQLI_ASSOC);
+//ejecutamos la query de contar
+$result = $conn->query($sqlCount);
+$total= mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+$total= $total[0]['total'];
 
 ?>
 
@@ -91,7 +111,7 @@ $usuarios = mysqli_fetch_all($result,MYSQLI_ASSOC);
             </tr> 
             <tr>
                 <!--formulario para buscar en las cabeceras de la tabla -->
-                <form action="tabla.php">
+                <form action="tabla.php" id="formBuscar">
                     <th><input type="text" name="id" value=""></th>
                     <th><input type="text" name="nombre" value=""></th>
                     <th><input type="text" name="apellido1" value=""></th>
@@ -119,9 +139,22 @@ $usuarios = mysqli_fetch_all($result,MYSQLI_ASSOC);
             </tr>
         <?php } ?>        
         </tbody>
-    </table>
 
+    </table>
+    <div>
+        <!-- $paginas = rendodeamos hacia arriba el total ( el restultado de la query con count(*)
+        partido de cada cuantos queremos paginar $limit , asi sacamos el total de paginas-->
+    <?php $paginas= (ceil($total/$limit));
+    //pintamos el enlace a las pagians
+    for($i=1; $i<$paginas;$i++){?>
+        <!-- pintamos el enlace a las pagians con la ruta que ya tenemos preparada en $url
+        apadiendole el parametro pag con el numero de la pagina -->
+        <a href="<?=$url."pag=".$i?>"><?=$i?></a>
+    <?php }?>
+
+    </div>
     <a href="logout.php">Salirse</a>
+
 </body>
 </html>
 
