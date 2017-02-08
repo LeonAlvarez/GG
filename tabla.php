@@ -66,7 +66,7 @@ if($condicion!=null){
 //Añadimos el offset y el limit a la query para paginar
 $sql = $sql." LIMIT ".$limit." OFFSET ".($pag-1)*$limit;
 ////para mostrar la query y depurar
-var_dump($sql);
+//var_dump($sql);
 
 $result = $conn->query($sql);
 //Recogemos el resultado de la query en $usuarios
@@ -109,6 +109,7 @@ $total= $total[0]['total'];
         <th>pais</th>
         <th>editar</th>
         <th>borrar</th>
+        <th>galeria</th>
     </tr>
     <tr>
         <th><input type="checkbox" onClick="marcarTodos(this)"></th>
@@ -119,7 +120,7 @@ $total= $total[0]['total'];
             <th><input type="text" name="apellido1" value=""></th>
             <th><input type="text" name="apellido2" value=""></th>
             <th><input type="text" name="pais" value=""></th>
-            <th colspan="2"><button type="submit">Buscar</button></th>
+            <th colspan="3"><button type="submit">Buscar</button></th>
         </form>
     </tr>
     </thead>
@@ -140,6 +141,7 @@ $total= $total[0]['total'];
                 <td><?=$user['pais']?></td>
                 <td><a href="editar.php?id=<?=$user['id']?>">Editar</a></td>
                 <td><a href="borrar.php?id=<?=$user['id']?>">Borrar</a></td>
+                <td><a href="galeria.php?id=<?=$user['id']?>">Galeria</a></td>
             </tr>
         <?php } ?>
         </tbody>
@@ -159,6 +161,7 @@ $total= $total[0]['total'];
 </div>
 <a href="logout.php">Salirse</a>
 <button type="submit">Borrar seleccionados</button>
+<a href="formularioSubirImagen.php">Subir Imagenes</a>
 </form>
 <script>
     function marcarTodos(source) {
