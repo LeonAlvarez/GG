@@ -50,6 +50,7 @@ $fotos = mysqli_fetch_all($result,MYSQLI_ASSOC);
     <tr>
         <td><label for="todos">Marcar todos:</label><input type="checkbox" onClick="marcarTodos(this)"></td>
         <td><button type="submit">Borrar seleccionados</button></td>
+        <td><a href="tabla.php">Volver</a></td>
     </tr>
 </table>
 </form>
