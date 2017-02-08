@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f751afb7-6d50-40bf-a901-1ae2e29b2147" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/formularioSubirImagen.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/galeria.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/subirImagenUsuario.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/borrarFotos.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/20986478-Group-of-cats-and-dogs-in-front-of-white-background-Stock-Photo.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/uploads/Captura de pantalla 2017-01-16 a las 21.17.26.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tabla.php" afterPath="$PROJECT_DIR$/tabla.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/galeria.php" afterPath="$PROJECT_DIR$/galeria.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/subirImagenUsuario.php" afterPath="$PROJECT_DIR$/subirImagenUsuario.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,8 +25,8 @@
       <file leaf-file-name="tabla.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tabla.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="163" column="1" lean-forward="false" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="54" />
+            <state relative-caret-position="400">
+              <caret line="126" column="4" lean-forward="true" selection-start-line="126" selection-start-column="4" selection-end-line="126" selection-end-column="30" />
               <folding>
                 <marker date="1486588671000" expanded="true" signature="1770:1854" ph="SELECT usuar... usuarios" />
                 <marker date="1486588671000" expanded="true" signature="1770:1903" ph="SELECT usuar... usuarios" />
@@ -36,14 +37,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="galeria.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="galeria.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/galeria.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="23" column="15" lean-forward="false" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
+            <state relative-caret-position="228">
+              <caret line="46" column="63" lean-forward="false" selection-start-line="46" selection-start-column="63" selection-end-line="46" selection-end-column="63" />
               <folding>
-                <marker date="1486589589000" expanded="true" signature="485:527" ph="SELECT * FRO... fotos_usuario" />
-                <marker date="1486589589000" expanded="true" signature="485:528" ph="SELECT * FRO... fotos_usuarios" />
+                <marker date="1486591610000" expanded="true" signature="485:527" ph="SELECT * FRO... fotos_usuario" />
+                <marker date="1486591610000" expanded="true" signature="485:528" ph="SELECT * FRO... fotos_usuarios" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="borrarFotos.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/borrarFotos.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="487">
+              <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+              <folding>
+                <marker date="1486590993000" expanded="true" signature="321:366" ph="DELETE FROM " />
               </folding>
             </state>
           </provider>
@@ -73,14 +86,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="subirImagenUsuario.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="subirImagenUsuario.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/subirImagenUsuario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="56" column="76" lean-forward="false" selection-start-line="56" selection-start-column="76" selection-end-line="56" selection-end-column="76" />
+            <state relative-caret-position="74">
+              <caret line="49" column="32" lean-forward="true" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
               <folding>
-                <marker date="1486589646000" expanded="true" signature="1900:1935" ph="INSERT INTO fotos_usuario... " />
-                <marker date="1486589646000" expanded="true" signature="1900:1958" ph="INSERT INTO fotos_usuario... " />
+                <marker date="1486590080000" expanded="true" signature="1899:1934" ph="INSERT INTO fotos_usuario... " />
+                <marker date="1486590080000" expanded="true" signature="1899:1957" ph="INSERT INTO fotos_usuario... " />
               </folding>
             </state>
           </provider>
@@ -107,6 +120,7 @@
       <find>var_du</find>
       <find>var</find>
       <find>target_file</find>
+      <find>va</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -121,8 +135,9 @@
         <option value="$PROJECT_DIR$/cosasRaras.php" />
         <option value="$PROJECT_DIR$/tabla.php" />
         <option value="$PROJECT_DIR$/formularioSubirImagen.php" />
-        <option value="$PROJECT_DIR$/galeria.php" />
         <option value="$PROJECT_DIR$/subirImagenUsuario.php" />
+        <option value="$PROJECT_DIR$/borrarFotos.php" />
+        <option value="$PROJECT_DIR$/galeria.php" />
       </list>
     </option>
   </component>
@@ -178,6 +193,11 @@
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
@@ -249,12 +269,12 @@
       <updated>1486224878768</updated>
       <workItem from="1486224880002" duration="9245000" />
       <workItem from="1486323406598" duration="1351000" />
-      <workItem from="1486561907314" duration="12789000" />
+      <workItem from="1486561907314" duration="14613000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23385000" />
+    <option name="totallyTimeSpent" value="25209000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="947" extended-state="0" />
@@ -384,30 +404,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tabla.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="163" column="1" lean-forward="false" selection-start-line="163" selection-start-column="1" selection-end-line="163" selection-end-column="54" />
-          <folding>
-            <marker date="1486588671000" expanded="true" signature="1770:1854" ph="SELECT usuar... usuarios" />
-            <marker date="1486588671000" expanded="true" signature="1770:1903" ph="SELECT usuar... usuarios" />
-            <marker date="1486588671000" expanded="true" signature="1955:2030" ph="SELECT count... usuarios" />
-            <marker date="1486588671000" expanded="true" signature="3111:3130" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/galeria.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="23" column="15" lean-forward="false" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="15" />
-          <folding>
-            <marker date="1486589589000" expanded="true" signature="485:527" ph="SELECT * FRO... fotos_usuario" />
-            <marker date="1486589589000" expanded="true" signature="485:528" ph="SELECT * FRO... fotos_usuarios" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/formularioSubirImagen.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
@@ -420,11 +416,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/subirImagenUsuario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="56" column="76" lean-forward="false" selection-start-line="56" selection-start-column="76" selection-end-line="56" selection-end-column="76" />
+        <state relative-caret-position="74">
+          <caret line="49" column="32" lean-forward="true" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
           <folding>
-            <marker date="1486589646000" expanded="true" signature="1900:1935" ph="INSERT INTO fotos_usuario... " />
-            <marker date="1486589646000" expanded="true" signature="1900:1958" ph="INSERT INTO fotos_usuario... " />
+            <marker date="1486590080000" expanded="true" signature="1899:1934" ph="INSERT INTO fotos_usuario... " />
+            <marker date="1486590080000" expanded="true" signature="1899:1957" ph="INSERT INTO fotos_usuario... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tabla.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="126" column="4" lean-forward="true" selection-start-line="126" selection-start-column="4" selection-end-line="126" selection-end-column="30" />
+          <folding>
+            <marker date="1486588671000" expanded="true" signature="1770:1854" ph="SELECT usuar... usuarios" />
+            <marker date="1486588671000" expanded="true" signature="1770:1903" ph="SELECT usuar... usuarios" />
+            <marker date="1486588671000" expanded="true" signature="1955:2030" ph="SELECT count... usuarios" />
+            <marker date="1486588671000" expanded="true" signature="3111:3130" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/borrarFotos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="25" column="27" lean-forward="false" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+          <folding>
+            <marker date="1486590993000" expanded="true" signature="321:366" ph="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/galeria.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="46" column="63" lean-forward="false" selection-start-line="46" selection-start-column="63" selection-end-line="46" selection-end-column="63" />
+          <folding>
+            <marker date="1486591610000" expanded="true" signature="485:527" ph="SELECT * FRO... fotos_usuario" />
+            <marker date="1486591610000" expanded="true" signature="485:528" ph="SELECT * FRO... fotos_usuarios" />
           </folding>
         </state>
       </provider>

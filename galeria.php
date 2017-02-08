@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 
 $sql = "SELECT * FROM fotos_usuario WHERE user_id=$userId";
 $result = $conn->query($sql);
-var_dump($sql);
+//var_dump($sql);
 //Recogemos el resultado de la query en $usuarios
 //(sera un array donde cada elemento sera tmb un array con los campos de las columnas de la tabla)
 $fotos = mysqli_fetch_all($result,MYSQLI_ASSOC);
@@ -36,12 +36,31 @@ $fotos = mysqli_fetch_all($result,MYSQLI_ASSOC);
     <title>Document</title>
 </head>
 <body>
-    <table>
-        <tr>
-            <?php foreach($fotos as $foto){?>
-                <td><img src="<?=$foto['ruta']?>"</td>
-            <?php } ?>
-        </tr>
-    </table>
+<form action="borrarFotos.php">
+<table>
+    <tr>
+        <?php foreach($fotos as $foto){?>
+            <td><img src="<?=$foto['ruta']?>" width="300px"></td>
+        <?php } ?>
+    </tr><tr>
+        <?php foreach($fotos as $foto){?>
+            <td><input type="checkbox" name="marcarEliminar[]" value="<?=$foto['id']?>"></td>
+        <?php } ?>
+    </tr>
+    <tr>
+        <td><label for="todos">Marcar todos:</label><input type="checkbox" onClick="marcarTodos(this)"></td>
+        <td><button type="submit">Borrar seleccionados</button></td>
+    </tr>
+</table>
+</form>
+</body>
+<script>
+    function marcarTodos(source) {
+        console.log(source.checked);
+        checkboxes = document.getElementsByName('marcarEliminar[]');
+        for(var i=0; i<checkboxes.length ; i++)
+            checkboxes[i].checked = source.checked;
+    }
+</script>
 </body>
 </html>
