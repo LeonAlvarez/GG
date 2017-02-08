@@ -13,16 +13,23 @@ else{
     }  
 } 
 require('configDB.php');
+$ids = isset($_REQUEST['marcarEliminar'])? implode(",",$_REQUEST['marcarEliminar']) : null;
+$id = isset($_REQUEST['id']) ? $_REQUEST['id'] : null ;
+//var_dump($ids);
+$sql=null;
+if($id)
+    $sql = "DELETE  FROM usuarios WHERE id=$id";
+if($ids)
+    $sql = "DELETE  FROM usuarios WHERE id IN ($ids)";
 
-$id = $_REQUEST['id'];
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if($sql) {
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $result = $conn->query($sql);
 }
-
-$sql = "DELETE  FROM usuarios WHERE id='$id'";
-$result = $conn->query($sql);
 
 header('Location: tabla.php');
